@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  div {
+    width: 100%;
+    padding: 100px;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background: mistyrose;
+  }
+
+  .three {
+    background: coral;
+  }
+</style>
+
+<button>1111</button>
+<script>
+const div = document.querySelectorAll('div')
+function show(e){
+  console.log(this.classList.value);
+   e.stopPropagation(); // stop bubbling!
+  // console.log('this:', this);  
+  // console.log('e.target:', e.target);  
+  //有冒泡的话 this 是一二三都有的 但是e.target只是指向点击的最初始的那个
+
+}
+div.forEach(div => div.addEventListener('click',show,{
+  capture: false,
+}))
+ 
+</script>
+</body>
+</html>

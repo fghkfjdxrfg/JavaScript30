@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🔥Hi美人!(叼花)</h1>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgb(255, 0, 0);
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const text = hero.querySelector('h1');
+  function shadow(e){
+    let x = e.offsetX;
+    let y = e.offsetY;
+    const textx = hero.offsetWidth;
+    const texty = hero.offsetHeight;
+    if(e.target!=this){
+       x = x + e.target.offsetLeft;
+       y = y + e.target.offsetTop;
+    }
+    
+    const target = 200;
+    let resultx = x/textx*target - target/2;
+    let resulty = y/texty*target - target/2;
+    
+
+    //console.log(text);
+
+    text.style.textShadow = `
+    ${resultx}px ${resulty}px 0px red,
+    ${resultx* -1}px ${resulty}px 0px green,
+    ${resulty}px ${resultx}px 0px yellow,
+    ${resultx*-1}px ${resulty*-1}px 0px blue
+    `;
+  }
+
+  hero.addEventListener('mousemove',shadow);
+
+
+
+</script>
+</body>
+</html>
